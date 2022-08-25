@@ -78,6 +78,8 @@ CONSTRAINT notlar_fk FOREIGN KEY (talebe_id) REFERENCES talebeler(id)
 ON DELETE CASCADE
 );
 INSERT INTO notlar VALUES ('123','kimya',75);
+INSERT INTO notlar VALUES ('123','Matematik',85);
+
 INSERT INTO notlar VALUES ('124', 'fizik',65);
 INSERT INTO notlar VALUES ('125', 'tarih',90);
 INSERT INTO notlar VALUES ('126', 'Matematik',90);
@@ -110,7 +112,7 @@ add constraint sinir check(yazili_notu>60);
 INSERT INTO talebeler VALUES(127, 'Mustafa Can', 'Hasan',45);
 --Açiklama :
 -- yukarda 60'i sinir olarak belirledigimiz icin bunu eklemedi
---check kisitl;amasi ile tablodaki istedigimiz sutunu sinirlandirabiliriz
+--check kisitlamasi ile tablodaki istedigimiz sutunu sinirlandirabiliriz
 
 
 create table ogrenciler(
@@ -240,7 +242,8 @@ select * from personel where isim like '%t';
 --isminin 2. harfi e olan personeli listeleyiniz
 select * from personel where isim like '_e%';
 
-
+insert into personel (id,isim,maas) values (1009,'Akin Alkan', 25000);
+select * FROM personel where isim like 'Aki%n';
 
 
 
