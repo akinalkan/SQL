@@ -18,6 +18,7 @@ INSERT INTO calisanlar VALUES('', 'osman', 2000, '2018-04-14');
 --INSERT INTO calisanlar VALUES('', 'osman can', 2000, '2018-04-14'); --PRIMARY KEY
 --INSERT INTO calisanlar VALUES( '10002', 'ayse Yılmaz' ,12000, '2018-04-14'); --PRIMARY KEY
 --INSERT INTO calisanlar VALUES( null, 'filiz ' ,12000, '2018-04-14'); -- PRIMARY KEY
+select *from calisanlar;
 -- FOREIGN KEY--
 CREATE TABLE adresler
 (
@@ -34,8 +35,10 @@ select * from adresler;
 INSERT INTO adresler VALUES('10012','Ağa Sok', '30.Cad.','Antep');
 --Parent tabloda olmayan id ile child tabloya ekleme yapamayız
 INSERT INTO adresler VALUES(NULL,'Ağa Sok', '30.Cad.','Antep');
+
 --Calısanlar id ile adresler tablosundaki adres_id ile eşlesenlere bakmak için
 select * from calisanlar,adresler WHERE calisanlar.id = adresler.adres_id;
+
 DROP table calisanlar
 --Parant tabloyu yani primary key olan tabloyu silmek istediğimizde tabloyu silmez
 --Önce child tabloyu silmemiz gerekir
