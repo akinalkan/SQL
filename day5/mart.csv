@@ -1,0 +1,18 @@
+mart,,,,,,nisan,,
+urun_id,musteri_isim,urun_isim,,,,urun_id,musteri_isim,urun_isim
+10,Mark,Honda,,,,10,Hasan,Honda
+20,John,Toyota,,,,10,Kemal,Honda
+30,Amy,Ford,,,,20,Ayse,Toyota
+20,Mark,Toyota,,,,50,Yasar,Volvo
+10,Adam,Honda,,,,20,Mine,Toyota
+40,John,Hyundai,,,,,,
+20,Eddie,Toyota,,,,,,
+,,,,,,,,
+,,,,,,,,
+"select urun_isim,musteri_isim from nisan",,,,,,,,
+where not exists(select urun_isim from mart where mart.urun_isim=nisan.urun_isim),,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,

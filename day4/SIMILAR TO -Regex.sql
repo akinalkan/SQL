@@ -1,10 +1,10 @@
 -- SELECT - SIMILAR TO - REGEX(Regular Expressions) -- 
 /*
-SIMILAR TO : Daha karmasik pattern(kalip) ile sorgulama islmei icin SIMILAR TO kullanilabilir
+SIMILAR TO : Daha karmasik pattern(kalip) ile sorgulama islemi icin SIMILAR TO kullanilabilir
 Sadece PostgreSQL'de kullanilir.Buyuk-kucuk harf onemlidir
 
-REGEX : Herhangi bbir kod, metin icerisin de yazi veya kod parcasinin aranip bulunmasini saglayan
-kendine ait bir soz dizimi olan bbir yapidir.MySQL'de (REGEX_LIKE)	 olarak kullanılır
+REGEX : Herhangi bir kod, metin icerisin de yazi veya kod parcasinin aranip bulunmasini saglayan
+kendine ait bir soz dizimi olan bir yapidir.MySQL'de (REGEX_LIKE)	 olarak kullanılır
 PostgreSQL'de "~" karakteri ile kullanılır.
 */
 
