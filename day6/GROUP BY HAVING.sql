@@ -19,9 +19,12 @@ having avg(maas)>3000;
 -- siralamaya dikkat[group by'dan sonra where kullanilmaz having kullanilir]
 
 --Erkek çalışanların sayısı 1’den fazla olan ülkelerin maaş ortalamasını getiren sorgu
-select ulke, round(avg(maas))
+select ulke, round(avg(maas)) as ort_maas
 from personel
 where cinsiyet='E'
 group by ulke
-having count(*)>1;
+having count(*)>1
+order by ort_maas desc;
+
+
 

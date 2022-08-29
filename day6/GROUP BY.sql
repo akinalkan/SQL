@@ -63,15 +63,20 @@ select * from manav;
 select * from personel;
 
 -- kisi ismine göre satılan toplam meyve miktarlarını gösteren sorguyu yazınız.
-select isim, sum(urun_miktari)as toplam_urun from manav
-group by isim;
+select isim, 
+sum(urun_miktari)as toplam_urun 
+from manav
+group by isim
+order by toplam_urun desc;
 
 -- satılan meyve türüne (urun_adi) göre urun alan kişi
 --sayısını gösteren sorguyu yazınız. 
 --NULL olarak girilen meyveyi listelemesin.
-
-select urun_adi, count(isim) as kisi_sayisi from manav
-where urun_adi is not null group by urun_adi ;
+select urun_adi,isim, 
+count(isim) as kisi_sayisi
+from manav
+where urun_adi is not null 
+group by urun_adi,isim ;
 
 -- satılan meyve türüne (urun_adi) göre satılan (urun_miktari )MIN ve
 -- MAX urun miktarlarini, MAX urun miktarina göre sıralayarak listeyen sorguyu yazınız.
@@ -89,7 +94,8 @@ order by isim desc;
 
 -- personelin calıştığı ülkeleri listeleyiniz
 select ulke , count(id)as kisi_toplami  from personel
-group by ulke;
+group by ulke
+order by kisi_toplami desc;
 
 -- Ülkelere göre ortalama maaşları listeleyiniz
 select ulke, round(avg(maas ),2)as ort_maas
@@ -114,14 +120,15 @@ from personel
 group by ulke ,sehir;
 
 -- Her ulke için bay ve bayan çalışan sayısı ve yaş ortalamasını sorgulayınız.
-select ulke,cinsiyet, count(*)as calisan_sayisi, round(avg(yas))as yas_ort-- count(*)--> ile her seyi saymis olduk
+select ulke,cinsiyet, 
+count(*)as calisan_sayisi,
+round(avg(yas))as yas_ort-- count(*)--> ile her seyi saymis olduk
 from personel
-group by ulke ,cinsiyet; 
+group by ulke ,cinsiyet
+order by ulke;
 
 -- Her ulke için bay ve bayan çalışan sayısı 
 --ve yaş ortalamasını  ve maası 30000 den büyük olanları sorgulayınız.
-
-
 select ulke , cinsiyet , count(*)as calisan_sayisi,round(avg(yas))as yas_ort
 from personel
 where maas>30000
@@ -135,7 +142,7 @@ from personel
 where maas>30000						
 group by ulke , cinsiyet 
 order by yas_ort desc;
---siralama-----
+-----siralama-----
 --  Şartlar
 --	Gruplamalar
 --  Sıralamalar

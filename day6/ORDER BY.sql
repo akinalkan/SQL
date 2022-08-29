@@ -55,6 +55,10 @@ select*from kisiler
 where soyisim='Bulut' 
 order by maas ;
 
+select * from kisiler
+where isim='Veli' and maas>5000
+order by maas desc;
+
 
 
 
