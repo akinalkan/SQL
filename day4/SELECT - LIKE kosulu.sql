@@ -12,40 +12,60 @@ _ -->Tek bir karakteri belirtir
 
 --Ismi A harfi ile baslayan personeli listele
 
-select * from personel where isim like 'A%';
+select * 
+from personel
+where isim like 'A%';
 
 --Ismi T harfi ile biten personeli listele
-select * from personel where isim like '%t';
+select * 
+from personel
+where isim like '%t';
 
 
 --isminin 2. harfi e olan personeli listeleyiniz
-select * from personel where isim like '_e%';
+select * 
+from personel
+where isim like '_e%';
 
 -- 'a' ile başlayıp 'n' ile biten personel isimlerini listeleyiniz
 
-select isim from personel where isim ~~* 'a%n';
+select isim 
+from personel 
+where isim ~~* 'a%n';
 
 -- ikinci karakteri 'a' ve dördüncü karakteri 'u' olan personel isimlerini listeleyiniz
 
-select isim from personel where isim ~~* '_a_u%';
+select isim 
+from personel
+where isim ~~* '_a_u%';
 
 
 -- İçinde 'e' ve 'r' bulunan personel isimlerini listeleyiniz
 
-select isim from personel where isim ~~* '%e%' and isim ~~* '%r%';
+select isim 
+from personel
+where isim ~~* '%e%' and isim ~~* '%r%';
 
 -- 2. harfi e olup diğer harflerinde y olan personeli listeleyiniz
-select isim from personel where isim ~~*'_e%' and isim ~~*'%y%';
+select isim
+from personel
+where isim ~~*'_e%' and isim ~~*'%y%';
 
 -- a harfi olmayan personeli listeleyin
-select isim from personel where isim !~~ '%a%';
+select isim
+from personel 
+where isim !~~ '%a%';
 
 
 -- 1. harfi A ve 7. harfi a olan personeli listeleyin
-select isim from personel where isim ~~* 'a_____a%';
+select isim
+from personel 
+where isim ~~* 'a_____a%';
 
 --Sondan ikinci karakteri 'r' olan "isim" değerlerini listeleyiniz.
-select isim from personel where isim ~~*'%r_';
+select isim 
+from personel 
+where isim ~~*'%r_';
 
 
 

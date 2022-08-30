@@ -5,6 +5,7 @@ isim VARCHAR(50) UNIQUE, -- UNIQUE --> Bir sutundaki tüm değerlerin BENZERSİZ
 maas int NOT NULL, -- NOT NULL --> Bir sutunun NULL içermemesini yani boş olmamasını sağlar
 ise_baslama DATE
 );
+
 INSERT INTO calisanlar VALUES('10002', 'Mehmet Yılmaz' ,12000, '2018-04-14');
 INSERT INTO calisanlar VALUES('10008', null, 5000, '2018-04-14');
 --INSERT INTO calisanlar VALUES('10010', Mehmet Yılmaz, 5000, '2018-04-14'); --Unique
@@ -18,33 +19,44 @@ INSERT INTO calisanlar VALUES('', 'osman', 2000, '2018-04-14');
 --INSERT INTO calisanlar VALUES('', 'osman can', 2000, '2018-04-14'); --PRIMARY KEY
 --INSERT INTO calisanlar VALUES( '10002', 'ayse Yılmaz' ,12000, '2018-04-14'); --PRIMARY KEY
 --INSERT INTO calisanlar VALUES( null, 'filiz ' ,12000, '2018-04-14'); -- PRIMARY KEY
+
 select *from calisanlar;
+
 -- FOREIGN KEY--
+
 CREATE TABLE adresler
 (
 adres_id char(5) ,
 sokak varchar(20),
 cadde varchar(30),
 sehir varchar(20),
-CONSTRAINT fk FOREIGN KEY (adres_id) REFERENCES calisanlar(id)
+			CONSTRAINT fk
+			FOREIGN KEY (adres_id)
+			REFERENCES calisanlar(id)
 );
 INSERT INTO adresler VALUES('10003','Mutlu Sok', '40.Cad.','IST');
 INSERT INTO adresler VALUES('10003','Can Sok', '50.Cad.','Ankara');
 INSERT INTO adresler VALUES('10002','Ağa Sok', '30.Cad.','Antep');
+
 select * from adresler;
+
 INSERT INTO adresler VALUES('10012','Ağa Sok', '30.Cad.','Antep');
 --Parent tabloda olmayan id ile child tabloya ekleme yapamayız
 INSERT INTO adresler VALUES(NULL,'Ağa Sok', '30.Cad.','Antep');
 
 --Calısanlar id ile adresler tablosundaki adres_id ile eşlesenlere bakmak için
-select * from calisanlar,adresler WHERE calisanlar.id = adresler.adres_id;
+select * from calisanlar,adresler
+WHERE calisanlar.id = adresler.adres_id;
 
 DROP table calisanlar
+
 --Parant tabloyu yani primary key olan tabloyu silmek istediğimizde tabloyu silmez
 --Önce child tabloyu silmemiz gerekir
-delete from calisanlar where id='10002';--parent-->hata verir once child dan silinmeli
+delete from calisanlar
+where id='10002';--parent-->hata verir once child dan silinmeli
 
-delete from adresler where adres_id='10002';--child'dan silebiliriz 
+delete from adresler 
+where adres_id='10002';--child'dan silebiliriz 
 
 select * from adresler;
 
@@ -77,8 +89,10 @@ CREATE TABLE notlar(
 talebe_id char(3),
 ders_adi varchar(30),
 yazili_notu int,
-CONSTRAINT notlar_fk FOREIGN KEY (talebe_id) REFERENCES talebeler(id)
-ON DELETE CASCADE
+	CONSTRAINT notlar_fk 
+	FOREIGN KEY (talebe_id) 
+	REFERENCES talebeler(id)
+	ON DELETE CASCADE
 );
 INSERT INTO notlar VALUES ('123','kimya',75);
 INSERT INTO notlar VALUES ('123','Matematik',85);
@@ -87,19 +101,25 @@ INSERT INTO notlar VALUES ('124', 'fizik',65);
 INSERT INTO notlar VALUES ('125', 'tarih',90);
 INSERT INTO notlar VALUES ('126', 'Matematik',90);
 
-select * from talebeler;--Parent
-select * from notlar;--Child
+select * 
+from talebeler;--Parent
 
-DELETE FROM notlar WHERE talebe_id = '123';
+select *
+from notlar;--Child
 
-DELETE FROM talebeler WHERE id='126';--ON DELETE CASCADE -->kullandigimiz icin parent table'dan direk silebildik
---Parent table'dan sildigimiz icin child table'dan da silinmis olur
+DELETE FROM notlar
+WHERE talebe_id = '123';
+
+DELETE FROM talebeler
+WHERE id='126'; --ON DELETE CASCADE -->kullandigimiz icin parent table'dan direk silebildik
+				--Parent table'dan sildigimiz icin child table'dan da silinmis olur
 
 
 delete from talebeler;--hata verir.
 
-drop table talebeler cascade;--Parent tabloyu kaldirmak istersek Drop table tablo_adi dan sonra... 
---Cascade komutunu kullaniriz
+drop table talebeler 
+cascade;--Parent tabloyu kaldirmak istersek Drop table tablo_adi dan sonra... 
+		--Cascade komutunu kullaniriz
 
 --Talebeler tablosundaki isim sutununa NOT NULL kisitlamasi ekleyiniz ve veri tipini varchar(30) olarak degistiriniz
 
@@ -135,7 +155,6 @@ select * from ogrenci_adres
 
 
 --Tablodaki bir sutuna PRIMARY KEY ekleme
-
 alter table ogrenciler
 add primary key (id);
 
@@ -195,32 +214,42 @@ mateamtik_sinav veya sinav2 den herhangi biri 50'den buyuk olan kayitlari listel
 
 select * from personel;
 --id'si 1003 ile 1005 arasinda olan personelin ismi listeleyiniz
-select * from personel where id between '1003' and '1005';
+select * from personel 
+where id between '1003' and '1005';
 
 --2.Yol
-select * from personel where id>='1003' and id<='1005'
+select * from personel 
+where id>='1003' and id<='1005'
 
 --Derya Soylu ile Yavuz Bal arasindaki personel bilgisini listeleyiniz
-select*from personel where isim between 'Derya Soylu' and 'Yavuz Bal'
+select*from personel
+where isim between 'Derya Soylu' and 'Yavuz Bal'
+
 --2.Yol
-select * from personel where isim>='Derya Soylu' and isim<='Yavuz Bal';
+select * from personel 
+where isim>='Derya Soylu' and isim<='Yavuz Bal';
 
 --Maasi 70000 ve ismi 'Sena Beyaz' olan personeli listele
-select * from personel where isim='Sena Beyaz' or maas='70000'
+select * from personel
+where isim='Sena Beyaz' or maas='70000'
 
-select * from personel where maas>='50000' and maas<='80000';
+select * from personel
+where maas>='50000' and maas<='80000';
 
 --IN :Birden fazla mantiksal ifade ile tanimlayabilecegimiz durumlari tek komutta yazabilme imkani verir
 --Farkli sutunlar icin IN kullanilamaz
 
 --id'si 1001, 1002 ve 1004 olan personelin bilgilerini listele
 --1.Yol
-select * from personel where id in('1001','1002','1004');
+select * from personel
+where id in('1001','1002','1004');
 --2.Yol
-select * from personel where id='1001' or id='1002' or id='1004';
+select * from personel 
+where id='1001' or id='1002' or id='1004';
 
---Maas'i sadece 70 000 ,100 000 olanb personel;i listele
-select * from personel where maas in('70000','100000')
+--Maas'i sadece 70 000 ,100 000 olan personeli listele
+select * from personel
+where maas in('70000','100000')
 
 /*
 SELECT - LIKE kosulu
@@ -236,17 +265,21 @@ _ -->Tek bir karakteri belirtir
 
 --Ismi A harfi ile baslayan personeli listele
 
-select * from personel where isim like 'A%';
+select * from personel
+where isim like 'A%';
 
 --Ismi T harfi ile biten personeli listele
-select * from personel where isim like '%t';
+select * from personel
+where isim like '%t';
 
 
 --isminin 2. harfi e olan personeli listeleyiniz
-select * from personel where isim like '_e%';
+select * from personel 
+where isim like '_e%';
 
 insert into personel (id,isim,maas) values (1009,'Akin Alkan', 25000);
-select * FROM personel where isim like 'Aki%n';
+select * FROM personel 
+where isim like 'Aki%n';
 
 
 

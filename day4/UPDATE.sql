@@ -32,11 +32,13 @@ select * from urunler;
 
 -- vergi_no’su 102 olan tedarikcinin firma ismini 'Vestel' olarak güncelleyeniz.
 UPDATE tedarikciler
-SET firma_ismi = 'Vestel' WHERE vergi_no=102
+SET firma_ismi = 'Vestel' 
+WHERE vergi_no=102;
 
 -- vergi_no’su 101 olan tedarikçinin firma ismini 'casper' ve irtibat_ismi’ni 'Ali Veli' olarak güncelleyiniz.
 UPDATE tedarikciler
-set firma_ismi = 'casper', irtibat_ismi = 'Ali Veli' where vergi_no =101;
+set firma_ismi = 'casper', irtibat_ismi = 'Ali Veli'
+where vergi_no =101;
 
 --  urunler tablosundaki 'Phone' değerlerini 'Telefon' olarak güncelleyiniz.
 UPDATE urunler
@@ -45,7 +47,8 @@ WHERE urun_isim = 'Phone'
 
 --  urunler tablosundaki urun_id değeri 1004'ten büyük olanların urun_id’sini 1 arttırın.
 UPDATE urunler
-SET urun_id = urun_id+1 where urun_id > 1004
+SET urun_id = urun_id+1 
+where urun_id > 1004
 
 -- urunler tablosundaki tüm ürünlerin urun_id değerini
 --ted_vergino sutun değerleri ile toplayarak güncelleyiniz.
@@ -56,12 +59,17 @@ set urun_id=ted_vergino+urun_id ;
 -- 'Adam Eve' olan firmanın ismi (firma_ismi) ile degistiriniz.
 ---*Bu soruda tedarikçiler ve urunler tablosunu yeniden oluşturduk---*
 UPDATE urunler                  
-SET urun_isim = (SELECT firma_ismi from tedarikciler WHERE irtibat_ismi = 'Adam Eve')                   
+SET urun_isim = (SELECT firma_ismi
+				 from tedarikciler 
+				 WHERE irtibat_ismi = 'Adam Eve')                   
 WHERE musteri_isim = 'Ali Bak';     
 
 -- Urunler tablosunda laptop satin alan musterilerin ismini, firma_ismi Apple’in irtibat_isim'i ile degistirin.
 UPDATE urunler                  
-SET musteri_isim = (SELECT irtibat_ismi from tedarikciler WHERE firma_ismi = 'Apple')                   
+SET musteri_isim = (SELECT irtibat_ismi
+					from tedarikciler
+					WHERE firma_ismi = 'Apple')                   
 WHERE urun_isim = 'Laptop'      
 
-select * from urunler
+select *
+from urunler

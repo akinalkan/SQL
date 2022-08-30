@@ -18,7 +18,8 @@ add column company_industry varchar(50);
 
 --2)TABLOYA worker_address sütunu ve default olarakta 'Miami, FL, USA' adresini ekleyiniz.
 alter table workers
-add column worker_address varchar(100) default 'Miami, FL, USA';
+add column worker_address varchar(100)
+default 'Miami, FL, USA';
 
 --3) tablodaki worker_address sütununu siliniz
 alter table workers
